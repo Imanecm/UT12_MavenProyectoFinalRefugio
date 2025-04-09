@@ -8,7 +8,7 @@ package controlador;
  *
  * @author USUARIO
  */
-public class UT12_MavenProyectoFinalRefugioAnimales {
+public class AgendaBDR {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
