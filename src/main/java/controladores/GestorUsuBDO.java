@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package controlador;
+package controladores;
 
 /**
  *
  * @author USUARIO
  */
-public class AgendaBDR {
+public class GestorUsuBDO {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
