@@ -8,7 +8,48 @@ package modelo;
  *
  * @author USUARIO
  */
-public class Voluntario {
-    //extends de persona
-    // pon los campos que faltan, (constructor, getter and setter, toString)
+public class Voluntario extends Persona{
+    
+    private boolean disponible;
+    enum Turno {MAÑANA, TARDE};
+    private Turno turno;
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    public Turno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Turno turno) {
+        this.turno = turno;
+    }
+
+    public Voluntario() {
+    }
+    //Constructors
+
+    public Voluntario(boolean disponible, Turno turno) {
+        this.disponible = disponible;
+        this.turno = turno;
+    }
+
+    public Voluntario(boolean disponible, Turno turno, String dni, String nomYApe, String direccion, String email, String telefono) {
+        super(dni, nomYApe, direccion, email, telefono);
+        this.disponible = disponible;
+        this.turno = turno;
+    }
+    //toString
+
+    @Override
+    public String toString() {
+        return "Voluntario{" + "disponible=" + disponible + ", turno=" + turno + '}';
+    }
+    
+    
 }
