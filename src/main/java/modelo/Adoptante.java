@@ -6,9 +6,9 @@ package modelo;
 
 /**
  *
- * @author USUARIO
+ * @author Alex
  */
-public class Voluntario {
-    //extends de persona
-    // pon los campos que faltan, (constructor, getter and setter, toString)
+public class Adoptante extends Persona{
+
+    
 }
