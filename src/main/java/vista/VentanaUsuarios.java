@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Alex
  */
 public class VentanaUsuarios extends javax.swing.JFrame {
-    GestorUsuBDO gestorUsuario = new GestorUsuBDO();
+    GestorUsuBDO gestorUsuario = new GestorUsuBDO(); //Esto es el constructor vacio
     
     String[] nomColumnas = {"USUARIO", "CLAVE"};
     Object[][] matrizDatos;
@@ -26,7 +26,7 @@ public class VentanaUsuarios extends javax.swing.JFrame {
      */
     public VentanaUsuarios() {
         initComponents();
-        gestorUsuario.conectarBDO();
+//        gestorUsuario.conectarBDO();  NO SE CONECTA, SE CONECTA DESDE EL CONSTRUCTOR VACIO
         dtm = new DefaultTableModel(matrizDatos, nomColumnas) {
             //para impedir edición de las celdas
             @Override
@@ -60,11 +60,13 @@ public class VentanaUsuarios extends javax.swing.JFrame {
                 }
             }
         });
+        
+        actualizaTabla();
     //Cierro VentanaUsuarios
     }
     
     private void actualizaTabla() {
-         Object[][] matrizDatos = gestorUsuario.obtenerTodo();
+        matrizDatos = gestorUsuario.obtenerTodo();
         dtm = new DefaultTableModel(matrizDatos, nomColumnas) {
             //para impedir edición de las celdas
             @Override
@@ -271,8 +273,8 @@ public class VentanaUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jB_ConectarBDOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_ConectarBDOActionPerformed
-        gestorUsuario.conectarBDO();
-        actualizaTabla();
+//        gestorUsuario.conectarBDO();
+//        actualizaTabla();
     }//GEN-LAST:event_jB_ConectarBDOActionPerformed
 
     private void jB_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_AñadirActionPerformed
