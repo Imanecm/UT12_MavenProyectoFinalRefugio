@@ -128,17 +128,17 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void jB_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_LoginActionPerformed
 
-        String claveObtenida = jTF_Clave.getText();
-        String claveBuscada = gestorUsuario.obtenerClave(jTF_Usuario.getText());
+        String claveBuscada = jTF_Clave.getText();
+        String claveObtenida = gestorUsuario.obtenerClave(jTF_Usuario.getText());
         
-        if (claveBuscada.equals(claveObtenida)) {
+        if (claveObtenida.equals(claveBuscada)) {
             VentanaMenu menu = new VentanaMenu();
             menu.setVisible(true);
         }
         else {
-            JOptionPane.showMessageDialog(rootPane, "ERROR: fallo en el inicio de sesión");
             camposEnBlanco();
-            System.err.println("La clave obtenida es "+claveObtenida+" y la clave buscada es "+claveBuscada);
+            System.err.println("La clave buscada es "+claveBuscada+" y la clave obtenida es "+claveObtenida);
+            JOptionPane.showMessageDialog(rootPane, "ERROR: fallo en el inicio de sesión");
         }
     }//GEN-LAST:event_jB_LoginActionPerformed
 
