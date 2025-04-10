@@ -39,8 +39,8 @@ public class VentanaUsuarios extends javax.swing.JFrame {
         jTablaDatos.setModel(dtm);
 
         // Configuración del tipo de selección de la tabla
-//        jTablaDatos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-//        // Ajuste de anchos
+        jTablaDatos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        // Ajuste de anchos
 //        jTablaDatos.getColumn("USUARIO").setPreferredWidth(100);
 //
 //        jTablaDatos.getColumn("CLAVE").setPreferredWidth(90);

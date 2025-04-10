@@ -4,6 +4,7 @@
  */
 package vista;
 
+import com.objectdb.o.MSS;
 import controladores.GestorUsuBDO;
 import javax.swing.JOptionPane;
 
@@ -18,7 +19,7 @@ public class VentanaLogin extends javax.swing.JFrame {
      */
     public VentanaLogin() {
         initComponents();
-        gestorUsuario.conectarBDO();
+        
     }
 
     /**
@@ -127,8 +128,11 @@ public class VentanaLogin extends javax.swing.JFrame {
         String claveObtenida = jTF_Clave.getText();
         String claveBuscada = gestorUsuario.obtenerClave(jTF_Usuario.getText());
         
-        if (claveObtenida.equals(claveBuscada)) {
+        if (claveBuscada.equals(claveObtenida)) {
             JOptionPane.showMessageDialog(rootPane, "¡PERFECTO! Puedes entrar.");
+        }
+        else {
+            System.out.println("La clave obtenida es "+claveObtenida+" y la clave buscada es "+claveBuscada);
         }
 //        String contraObtenida;
 //        contraObtenida = gestorUsuario.obtenerClave(jTF_Usuario.getText());
