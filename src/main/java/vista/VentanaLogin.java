@@ -20,7 +20,11 @@ public class VentanaLogin extends javax.swing.JFrame {
     public VentanaLogin() {
         initComponents();
     }
-
+    
+    private void camposEnBlanco() {
+        jTF_Usuario.setText("");
+        jTF_Clave.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,15 +132,14 @@ public class VentanaLogin extends javax.swing.JFrame {
         String claveBuscada = gestorUsuario.obtenerClave(jTF_Usuario.getText());
         
         if (claveBuscada.equals(claveObtenida)) {
-            JOptionPane.showMessageDialog(rootPane, "¡PERFECTO! Puedes entrar.");
+            VentanaMenu menu = new VentanaMenu();
+            menu.setVisible(true);
         }
         else {
-            System.out.println("La clave obtenida es "+claveObtenida+" y la clave buscada es "+claveBuscada);
+            JOptionPane.showMessageDialog(rootPane, "ERROR: fallo en el inicio de sesión");
+            camposEnBlanco();
+            System.err.println("La clave obtenida es "+claveObtenida+" y la clave buscada es "+claveBuscada);
         }
-//        String contraObtenida;
-//        contraObtenida = gestorUsuario.obtenerClave(jTF_Usuario.getText());
-//        String contra = jTF_Clave.getText();
-//        COMPARAR contraObtenida.equals(contra) Si coinciden es el usuario entonces pasa.
     }//GEN-LAST:event_jB_LoginActionPerformed
 
     /**
