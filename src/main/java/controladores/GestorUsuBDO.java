@@ -25,7 +25,7 @@ public class GestorUsuBDO {
     EntityManagerFactory emf;
     EntityManager em;
     
-    public void GestorUsuBDO() {
+    public GestorUsuBDO() {
         conectarBDO();
     }
     
@@ -132,13 +132,11 @@ public class GestorUsuBDO {
     
     public String obtenerClave(String nombre){
         String clave = null;
-        System.out.println("Empezamos a buscar");
         try {
             // inicio transacción bloque hacer datos persistentes -> uno por cada commit()
             em.getTransaction().begin();
-            System.out.println("MOMENTO DE BUSCAR");
+            
             //Búsqueda
-//            Usuario usu = em.find(Usuario.class, nombre);
             Usuario usu = em.find(Usuario.class, nombre);
             // ACCION
             if (usu != null) {
@@ -151,8 +149,7 @@ public class GestorUsuBDO {
             
             // confirmacion de la persistencia
             em.getTransaction().commit();
-
-            System.out.println("No se ha hecho nada");
+            
         } catch (Exception e) {
             System.err.println("\tError al ejecutar la transacción.");
         }

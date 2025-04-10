@@ -12,7 +12,8 @@ import javax.persistence.Id;
  *
  * @author USUARIO
  */
-@Entity public class Usuario implements Serializable{
+@Entity 
+public class Usuario implements Serializable{
     @Id
     private String usuario;
     private String clave;
