@@ -4,11 +4,23 @@
 
 package controladores;
 
+import com.objectdb.o.JOP;
+import java.awt.Component;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 import modelo.Usuario;
 
 /**
@@ -91,17 +103,41 @@ public class GestorUsuBDO {
             Usuario usu = new Usuario(usuario, clave); //Aqui están los valores que vienen de la ventana (los escritos por el admin)
             // inicio transacción bloque hacer datos persistentes -> uno por cada commit()
             em.getTransaction().begin();
-
+            em.find(Usuario.class, usuario);
             // indicación de hacer persistentes los objetos usuarios
             em.persist(usu); //se añade el usuario y la clave dados desde la ventana
 
-            // em.persist(v); // provocando un error
             // confirmacion de la persistencia
             em.getTransaction().commit();
 
             System.out.println("Usuario nuevo añadido a la BDO." + usuario + " y " + clave);
         } catch (Exception e) {
-            System.err.println("\tError al ejecutar la transacción.");
+            System.out.println(e);
+            // esto es creado por la ayuda de NetBeans, para inicializar la ventana desde aqui, y lanzar un mensaje de error en el que el nombre
+            // del usuario ya existe y no pueden haber 2 repetidos
+            Component parentComponent = null;
+            JOptionPane.showMessageDialog(parentComponent, "Pruebe con otro nombre de usuario, puede que este esté en uso.");
+        }
+    }
+    
+    public void borrarTodo(int confirm) {
+        Query qBorrar;
+        Query qModif;
+
+        try {
+            if (confirm == 0) {
+                em.getTransaction().begin();
+                
+                jpql = "DELETE FROM Usuario";
+                System.out.println("");
+                System.out.println("Borrando vehículo con jpql [" + jpql + "]");
+                qModif = em.createQuery(jpql);
+                int numObjBorrados = qModif.executeUpdate();
+                System.out.println("Usuarios borrados: " + numObjBorrados);
+                em.getTransaction().commit();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
     
@@ -154,5 +190,96 @@ public class GestorUsuBDO {
             System.err.println("\tError al ejecutar la transacción.");
         }
         return clave;
+    }
+    
+    public void actualizar(String buscarNom, String nombre, String clave) {
+        // modificación  -------------------------------------------------------
+        System.out.println("Actualizando los datos del usuario");
+        // inicio transacción bloque modificar
+        em.getTransaction().begin();
+
+        // modificación mediante identificador 
+        System.out.println("Modificando matrícula con setter");
+        Usuario usu = em.find(Usuario.class, buscarNom); //Se busca por el nombre del usuario ya que no se van a poder tener dos iguales
+        usu.setUsuario(nombre);
+        usu.setClave(clave);
+
+        // modificación mediante query
+//        Query qModif;
+//        jpql = "UPDATE Usuarios SET usuario = '" + nombre + "', clave = '" 
+//                    + clave + "'"; 
+//        System.out.println("Modificando matrícula con jpql [" + jpql + "]");
+//        System.out.println("");
+//        qModif = em.createQuery(jpql);
+//        int numObjModificados = qModif.executeUpdate();
+        em.getTransaction().commit();
+    }
+    
+    //FICHEROS
+    public void guardarArchivoBin(String nomArchivoBin, Object[][] tabla) {
+        try {
+            ObjectOutputStream fichero1;
+            fichero1 = new ObjectOutputStream(new FileOutputStream(nomArchivoBin));
+            fichero1.writeObject(tabla);
+            System.out.println("\tLos datos se han guardado correctamente en " + nomArchivoBin);
+        } catch (IOException e) {
+            System.out.println("\tError: ha habido una fallo al escribir los datos de la tabla en el archivo.");
+        }
+    }
+    
+    public void cargarArchivoBin(String nomArchivoBin) throws ClassNotFoundException {
+        Object[][] tabla = null;
+        String usuario, clave;
+        
+        // borramos la tabla completa para poner solo lo guardado
+        borrarTodo(0);
+        try {
+            ObjectInputStream fichero1 = new ObjectInputStream(new FileInputStream(nomArchivoBin));
+            tabla = (Object[][]) fichero1.readObject();
+            for (Object[] objects : tabla) {
+                    usuario = objects[0].toString();
+                    clave = objects[1].toString();
+                    añadir(usuario, clave);
+            }
+            System.out.println("Los datos se han cargado correctacamente desde " + nomArchivoBin);
+            
+        } catch (IOException e) {
+            System.out.println("\tError: Ha habido un fallo al cargar los datos.");
+        }
+    }
+    
+    public void guardarArchivoXML(String nomArchivoXML, Object[][] tabla) {
+        XMLEncoder xmle;
+
+        // necesitamos pasar el DefaultListModel a List para poder guardarlo como XML
+        try {
+            xmle = new XMLEncoder(new FileOutputStream(nomArchivoXML) );
+            xmle.writeObject(tabla);
+            xmle.close();
+            System.out.println("\tLos datos se han guardado correctamente en " + nomArchivoXML);
+        } catch (Exception e) {
+            System.err.println("\tERROR en la escritura de datos del archivo: " + "listadoColores.xml");
+        }
+    }
+    
+    public void cargarArchivoXML(String nomArchivoXML) throws ClassNotFoundException {
+        Object[][] tabla = null;
+        String usuario, clave;
+
+        // borramos la tabla completa para poner solo lo guardado
+        borrarTodo(0);
+        try {
+            XMLDecoder xmld = new XMLDecoder(new FileInputStream(nomArchivoXML));
+            tabla = (Object[][]) xmld.readObject();
+//            xmld.close();
+            for (Object[] objects : tabla) {
+                usuario = objects[0].toString();
+                clave = objects[1].toString();
+                añadir(usuario, clave);
+            }
+            System.out.println("Los datos se han cargado correctamente desde " + nomArchivoXML);
+        } catch (Exception e) {
+            System.err.println("\tERROR en la lectura de datos del archivo: " + "listadoColores.xml");
+        }
     }
 }

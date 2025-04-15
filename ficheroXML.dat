@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="23" class="java.beans.XMLDecoder">
+ <array class="[Ljava.lang.Object;" length="5">
+  <void index="0">
+   <array class="java.lang.Object" length="2">
+    <void index="0">
+     <string>XML</string>
+    </void>
+    <void index="1">
+     <string>xxmmll</string>
+    </void>
+   </array>
+  </void>
+  <void index="1">
+   <array class="java.lang.Object" length="2">
+    <void index="0">
+     <string>admin</string>
+    </void>
+    <void index="1">
+     <string>1234</string>
+    </void>
+   </array>
+  </void>
+  <void index="2">
+   <array class="java.lang.Object" length="2">
+    <void index="0">
+     <string>josefrancisco</string>
+    </void>
+    <void index="1">
+     <string>jose92</string>
+    </void>
+   </array>
+  </void>
+  <void index="3">
+   <array class="java.lang.Object" length="2">
+    <void index="0">
+     <string>pepe</string>
+    </void>
+    <void index="1">
+     <string>1010</string>
+    </void>
+   </array>
+  </void>
+  <void index="4">
+   <array class="java.lang.Object" length="2">
+    <void index="0">
+     <string>tomasViyuela</string>
+    </void>
+    <void index="1">
+     <string>9202tom</string>
+    </void>
+   </array>
+  </void>
+ </array>
+</java>
