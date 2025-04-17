@@ -18,7 +18,7 @@ public class Usuario implements Serializable{
     private String usuario;
     private String clave;
     
-    //Constructor
+    //Constructores
 
     public Usuario() {
     }
