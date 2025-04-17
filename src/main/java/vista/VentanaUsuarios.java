@@ -121,7 +121,7 @@ public class VentanaUsuarios extends javax.swing.JFrame {
         jB_GuardarfichBin = new javax.swing.JButton();
         jB_GuardarfichXML = new javax.swing.JButton();
         jB_CargarfichBin = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jB_CargarfichXML = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -300,7 +300,7 @@ public class VentanaUsuarios extends javax.swing.JFrame {
                 .addComponent(jB_BorrarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
                 .addComponent(jB_BorrarSelec)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jB_BorrarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62))
         );
@@ -351,10 +351,10 @@ public class VentanaUsuarios extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Cargar fichero XML");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jB_CargarfichXML.setText("Cargar fichero XML");
+        jB_CargarfichXML.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jB_CargarfichXMLActionPerformed(evt);
             }
         });
 
@@ -370,7 +370,7 @@ public class VentanaUsuarios extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jB_GuardarfichXML, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jB_CargarfichXML, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(103, 103, 103))
         );
         jPanel7Layout.setVerticalGroup(
@@ -383,7 +383,7 @@ public class VentanaUsuarios extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jB_CargarfichBin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jB_CargarfichXML, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -549,14 +549,14 @@ public class VentanaUsuarios extends javax.swing.JFrame {
         gestorUsuarios.guardarArchivoXML(nomArchivoXML, matrizDatos);
     }//GEN-LAST:event_jB_GuardarfichXMLActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jB_CargarfichXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_CargarfichXMLActionPerformed
         try {
             gestorUsuarios.cargarArchivoXML(nomArchivoXML);
             actualizaTabla();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(VentanaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jB_CargarfichXMLActionPerformed
 
     /**
      * @param args the command line arguments
@@ -601,10 +601,10 @@ public class VentanaUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton jB_BorrarTodo;
     private javax.swing.JButton jB_CargarEjemplos;
     private javax.swing.JButton jB_CargarfichBin;
+    private javax.swing.JButton jB_CargarfichXML;
     private javax.swing.JButton jB_GuardarfichBin;
     private javax.swing.JButton jB_GuardarfichXML;
     private javax.swing.JButton jB_VaciarCampos;
-    private javax.swing.JButton jButton4;
     private javax.swing.JCheckBox jCheckBoxVaciar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

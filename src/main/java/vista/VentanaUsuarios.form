@@ -308,7 +308,7 @@
                   <Component id="jB_BorrarNombre" min="-2" pref="163" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Component id="jB_BorrarSelec" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="87" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jB_BorrarTodo" min="-2" pref="117" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               </Group>
@@ -418,7 +418,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jB_GuardarfichXML" min="-2" pref="161" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="161" max="-2" attributes="0"/>
+                      <Component id="jB_CargarfichXML" min="-2" pref="161" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
               </Group>
@@ -435,7 +435,7 @@
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jB_CargarfichBin" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="jButton4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jB_CargarfichXML" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="27" max="32767" attributes="0"/>
               </Group>
@@ -467,12 +467,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_CargarfichBinActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="jB_CargarfichXML">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cargar fichero XML"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_CargarfichXMLActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
